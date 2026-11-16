@@ -1,0 +1,17 @@
+# GitHub Archive Explorer - Python dependencies
+# Install with: pip install -r requirements.txt
+
+# Week 1 - Redis
+redis>=5.0
+python-dotenv>=1.0
+
+# Week 2 - MongoDB (uncomment when added)
+# pymongo>=4.6
+
+# Week 3 - Cassandra (uncomment when added)
+# cassandra-driver>=3.29
+
+# Week 4 - Neo4j (uncomment when added)
+# neo4j>=5.20
+
+# Week 5 - SQLite uses Python's built-in sqlite3 module (no install needed)
