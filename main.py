@@ -32,7 +32,7 @@ except ImportError:
 # --
 REDIS_HOST = os.getenv("REDIS_HOST", "127.0.0.1")
 REDIS_PORT = int(os.getenv("REDIS_PORT", "6379"))
-DATA_PATH = os.path.expanduser(os.getenv("DATA_PATH", "data/"))  # the .zip or a folder
+DATA_PATH = os.path.expanduser(os.getenv("DATA_PATH", "data/GitHubArchive-Dataset.zip"))  # the .zip or a folder
 
 # Common words that are not added to the keyword search index
 STOP_WORDS = {"the", "and", "for", "with", "from", "this", "that", "into",
