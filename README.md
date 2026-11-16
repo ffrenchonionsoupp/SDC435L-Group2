@@ -41,19 +41,25 @@ sudo service redis-server start
 redis-cli ping
 # Expected output: PONG
 ```
-### 4. Configure environment variables (optional)
-Create a file named `.env` in the project root to change the defaults:
+### 4. Add the dataset
+The dataset is **not** included in the repository because it is too large for GitHub.
+
+1. Download `GitHubArchive-Dataset.zip` from the course page or https://ecpi.instructure.com/courses/168279/files/42293011?verifier=j69DUlactxQ5XhqHNnAgvTdNuGMOSme9cpDj3ODC&wrap=1
+2. Create a `data` folder in the project root and put the zip inside it, **without unzipping it**:
+   ```
+   SDC435L-Group2/data/GitHubArchive-Dataset.zip
+   ```
+
+The application reads the files straight from the zip.
+
+### 5. Configure environment variables (optional)
+Only needed if your Redis settings or dataset location are different. Create a file named `.env` in the project root:
 ```env
 REDIS_HOST=localhost
 REDIS_PORT=6379
-DATA_PATH=data/
+DATA_PATH=data/GitHubArchive-Dataset.zip
 ```
-If the dataset in `data/` is still zipped, use `DATA_PATH=data/GitHubArchive-Dataset.zip` instead.
-
-### 5. Dataset
-The dataset is included in the repository in the `data/` folder, so no separate download is needed. It is cloned automatically with the project.
-
-The application reads the newline-delimited JSON files either straight from the `.zip` or from a folder of the extracted `.json` files, depending on `DATA_PATH`.
+`DATA_PATH` can also point to the zip somewhere else (for example `~/Downloads/GitHubArchive-Dataset.zip`), or to a folder of the extracted `.json` files.
 
 | File | Records | Contents | Used in Week 1 |
 |---|---|---|---|
@@ -118,7 +124,7 @@ python3 main.py
 ```
 .
 ├── main.py           # Application: menus, Redis CRUD, and analysis features
-├── data/             # GitHubArchive-Dataset (included)
+├── data/             # GitHubArchive-Dataset.zip goes here (not committed)
 ├── requirements.txt
 ├── .env              # Optional local settings (not committed)
 └── README.md
@@ -131,6 +137,6 @@ python3 main.py
 |---|---|
 | `ERROR: Could not connect to Redis` | Start Redis (`sudo service redis-server start`) and check with `redis-cli ping`. |
 | `ModuleNotFoundError: No module named 'redis'` | Run `pip install -r requirements.txt`. |
-| `Commits.json not found - skipped` | Check `DATA_PATH`: point it at the `.zip`, or extract the zip inside `data/`. |
+| `Commits.json not found - skipped` | Make sure the zip is at `data/GitHubArchive-Dataset.zip`, or set `DATA_PATH` to where it is saved. |
 | Keyword search finds nothing | Use words with 3+ letters. Very common words (e.g. "the", "fix", "update") are not indexed. |
 | Want a fresh start | Choose option 1 and answer `y` to clear and reload. |
